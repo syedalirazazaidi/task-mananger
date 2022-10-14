@@ -18,8 +18,12 @@ const Todo = () => {
   const [text, setInput] = React.useState('')
   const [newId, setNewID] = React.useState(1)
   const [textArray, setTextArray] = useState([])
-
   const handleInputChange = (e) => setInput(e.target.value)
+  const handleEdit = async (task) => {
+    const { id, createdAt, text } = task
+    console.log(text)
+    setNewID(id)
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     if (newId === 1) {
@@ -29,6 +33,7 @@ const Todo = () => {
       }).then(() => {
         setInput('')
       })
+    } else {
     }
   }
 
@@ -37,12 +42,11 @@ const Todo = () => {
       <Heading
         py={['40px', '10px', '10px']}
         textAlign={['center', 'center', 'center']}
-        ml={['72px', '40px', '40px']}
+        ml={['72px', '10px', '10px']}
       >
         Todo App
       </Heading>
       <Divider></Divider>
-      <Text py="10px">Wellcome ali</Text>
       <form onSubmit={handleSubmit}>
         <HStack>
           <FormControl isRequired>
@@ -69,7 +73,11 @@ const Todo = () => {
         </HStack>
       </form>
 
-      <GetAllTodos setTextArray={setTextArray} textArray={textArray} />
+      <GetAllTodos
+        handleEdit={handleEdit}
+        setTextArray={setTextArray}
+        textArray={textArray}
+      />
     </Box>
   )
 }

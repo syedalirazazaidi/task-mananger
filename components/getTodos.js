@@ -14,7 +14,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 
-const GetAllTodos = ({ setTextArray, textArray }) => {
+const GetAllTodos = ({ setTextArray, textArray, handleEdit }) => {
   // useEffect(() => {
   //   db.collection('todos')
   //     .orderBy('createdAt', 'desc')
@@ -48,14 +48,13 @@ const GetAllTodos = ({ setTextArray, textArray }) => {
 
   // EDIT FUNCTION
 
-  const handleEdit = async (id) => {}
-
   if (!textArray.length) {
-    return <p>Loading...</p>
+    return <p>{`there are ${textArray.length} todos`}</p>
   }
 
   return (
     <Box>
+      <p>{`there are ${textArray.length} todos`}</p>
       {textArray &&
         textArray.map((text) => (
           <HStack spacing={40} key={text.id}>
@@ -87,7 +86,7 @@ const GetAllTodos = ({ setTextArray, textArray }) => {
                   h={6}
                   color="grey"
                   mx="10px"
-                  onClick={() => handleEdit(text.id)}
+                  onClick={() => handleEdit(text)}
                 />
               </Tooltip>
             </Box>
