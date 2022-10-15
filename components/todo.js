@@ -21,7 +21,7 @@ const Todo = () => {
   const handleInputChange = (e) => setInput(e.target.value)
   const handleEdit = async (task) => {
     const { id, createdAt, text } = task
-    console.log(text)
+
     setInput(text)
     setNewID(id)
   }
