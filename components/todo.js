@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { db } from '../firebase'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore'
 
 import GetAllTodos from './getTodos'
 const Todo = () => {
@@ -22,6 +22,7 @@ const Todo = () => {
   const handleEdit = async (task) => {
     const { id, createdAt, text } = task
     console.log(text)
+    setInput(text)
     setNewID(id)
   }
   const handleSubmit = (e) => {
@@ -34,6 +35,8 @@ const Todo = () => {
         setInput('')
       })
     } else {
+      updateDoc(doc(db, 'todos', newId), { text })
+      setInput('')
     }
   }
 
