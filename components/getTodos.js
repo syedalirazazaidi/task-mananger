@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore'
+import React, { useEffect } from 'react'
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
-import {
-  Box,
-  Flex,
-  Tooltip,
-  Text,
-  VStack,
-  Stack,
-  Container,
-  HStack,
-  Button,
-} from '@chakra-ui/react'
+import { Box, Tooltip, Text, HStack } from '@chakra-ui/react'
 
 const GetAllTodos = ({ setTextArray, textArray, handleEdit }) => {
   // useEffect(() => {

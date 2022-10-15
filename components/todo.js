@@ -4,7 +4,6 @@ import {
   Input,
   Button,
   HStack,
-  Text,
   Box,
   Divider,
 } from '@chakra-ui/react'
